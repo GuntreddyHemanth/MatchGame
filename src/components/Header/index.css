@@ -33,13 +33,14 @@
   font-size: 18px;
   padding-right: 16px;
 }
-.score-time {
+.score-timer {
   font-size: 22px;
   color: #fec653;
   font-weight: bold;
 }
 .timer-container {
   display: flex;
+  align-items: center;
 }
 .timer-image {
   width: 22px;
