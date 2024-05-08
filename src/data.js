@@ -1,9 +1,9 @@
- export const tabsList = [
+export const tabsList = [
   {tabId: 'FRUIT', displayText: 'Fruits'},
   {tabId: 'ANIMAL', displayText: 'Animals'},
   {tabId: 'PLACE', displayText: 'Places'},
 ]
- export const imagesList = [
+export const imagesList = [
   {
     id: 'b11ec8ce-35c9-4d67-a7f7-07516d0d8186',
     imageUrl:
@@ -243,4 +243,4 @@
   },
 ]
 
-export default null 
+export default null

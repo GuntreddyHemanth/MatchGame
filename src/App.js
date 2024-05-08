@@ -2,13 +2,18 @@ import {Component} from 'react'
 
 import './App.css'
 
+import {tabsList, imagesList} from './data'
+
 import Header from './components/Header'
 import GameOver from './components/GameOver'
+import Game from './components/Game'
 
 const defaultValues = {
+  activeTabId: tabsList[0].tabId,
+  currentImageId: imagesList[0].id,
   score: 0,
   timer: 60,
-  gameOver: true,
+  gameOver: false,
 }
 
 class App extends Component {
@@ -30,12 +35,34 @@ class App extends Component {
     }
   }
 
+  onClickTab = activeTabId => this.setState({activeTabId})
+
+  onClickThumbnail = id => {
+    const {currentImageId} = this.state
+    if (id !== currentImageId) {
+      clearInterval(this.timerId)
+      this.setState({gameOver: true})
+    } else {
+      this.generateRandomImage()
+    }
+  }
+
+  generateRandomImage = () => {
+    const index = Math.floor(Math.random() * imagesList.length)
+    const currentImageId = imagesList[index].id
+    const {score} = this.setState
+    this.setState({currentImageId, score: score + 1})
+  }
+
   onClickGameOver = () => {
     this.setState({...defaultValues}, this.setTimerInterval)
   }
 
   render() {
-    const {timer, score, gameOver} = this.state
+    const {timer, score, gameOver, activeTabId, currentImageId} = this.state
+    const thumbnailImagesList = imagesList.filter(
+      imageDetails => imageDetails.category === activeTabId,
+    )
     return (
       <div className="app-container">
         <Header score={score} timer={timer} />
@@ -43,7 +70,15 @@ class App extends Component {
           {gameOver ? (
             <GameOver score={score} onClick={this.onClickGameOver} />
           ) : (
-            true
+            <Game
+              tabs={tabsList}
+              allImagesList={imagesList}
+              thumbnailImages={thumbnailImagesList}
+              activeTabId={activeTabId}
+              currentImageId={currentImageId}
+              onClickTab={this.onClickTab}
+              onClickThumbnail={this.onClickThumbnail}
+            />
           )}
         </div>
       </div>
