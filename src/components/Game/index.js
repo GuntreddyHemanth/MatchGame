@@ -1,4 +1,6 @@
 import './index.css'
+import TabItem from '../TabItem'
+import ThumbnailItem from '../ThumbnailItem'
 
 const Game = props => {
   const {

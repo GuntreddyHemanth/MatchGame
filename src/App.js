@@ -50,7 +50,7 @@ class App extends Component {
   generateRandomImage = () => {
     const index = Math.floor(Math.random() * imagesList.length)
     const currentImageId = imagesList[index].id
-    const {score} = this.setState
+    const {score} = this.State
     this.setState({currentImageId, score: score + 1})
   }
 
