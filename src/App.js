@@ -21,6 +21,10 @@ class App extends Component {
     ...defaultValues,
   }
 
+  componentDidMount() {
+    this.setTimerInterval()
+  }
+
   setTimerInterval = () => {
     this.timerId = setInterval(this.setTimer, 1000)
   }
@@ -50,7 +54,7 @@ class App extends Component {
   generateRandomImage = () => {
     const index = Math.floor(Math.random() * imagesList.length)
     const currentImageId = imagesList[index].id
-    const {score} = this.State
+    const {score} = this.state
     this.setState({currentImageId, score: score + 1})
   }
 

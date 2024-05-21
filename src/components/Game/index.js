@@ -22,7 +22,7 @@ const Game = props => {
         <TabItem
           tabDetails={tab}
           active={tab.tabId === activeTabId}
-          onclick={onClickTab}
+          onClick={onClickTab}
           key={tab.tabId}
         />
       ))}
